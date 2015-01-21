@@ -1,0 +1,16 @@
+{
+  "name": "thomaskeeper-api",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server"
+  },
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "express": "~3.4.4",
+    "mailgun-js": "^0.6.7",
+    "moment": "^2.8.3",
+    "mysql": "*",
+    "q": "^1.0.1",
+    "sequelize": "^2.0.0-rc8"
+  }
+}
