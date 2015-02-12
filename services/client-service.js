@@ -13,7 +13,15 @@ function getAll() {
 }
 
 function getClient(id) {
-  return db.client.find(id);
+  return db.client.find({
+    where: {
+      id: id
+    },
+    include: [{
+      model: db.project,
+      as: "projects"
+    }]
+  });
 }
 
 function deleteClient(id) {
