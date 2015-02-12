@@ -4,12 +4,12 @@ var Sequelize = require('Sequelize');
 
 module.exports = function(sequelize) {
 
-  var Project = sequelize.define('project', {
+  var Client = sequelize.define('client', {
     name: {
       type: Sequelize.STRING,
       field: 'name'
     }
   });
-  return Project;
+  return Client;
 
 };
