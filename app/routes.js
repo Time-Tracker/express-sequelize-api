@@ -17,14 +17,10 @@ module.exports = function(router) {
   router.delete('/projects/:id', projectController.deleteProject);
   router.get('/projects/:id', projectController.getProject);
 
-  router.get('/projects/:id/tasks', taskController.getTasksByProject);
-
   router.get('/tasks', taskController.getAll);
   router.post('/tasks', taskController.saveTask);
   router.delete('/tasks/:id', taskController.deleteTask);
   router.get('/tasks/:id', taskController.getTask);
-
-  router.get('/tasks/:id/tracker', tasklogController.getTrackerByTask);
 
   router.get('/tracker', tasklogController.getAll);
   router.post('/tracker', tasklogController.saveTracker);
