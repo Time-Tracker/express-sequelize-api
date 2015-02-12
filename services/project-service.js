@@ -4,11 +4,24 @@ var db = require('../db/db.js');
 var q = require('q');
 
 function getAll() {
-  return db.project.findAll();
+  return db.project.findAll({
+    include: [{
+      model: db.task,
+      as: "tasks"
+    }]
+  });
 }
 
 function getProject(id) {
-  return db.project.find(id);
+  return db.project.find({
+    where: {
+      id: id
+    },
+    include: [{
+      model: db.task,
+      as: "tasks"
+    }]
+  });
 }
 
 function deleteProject(id) {
