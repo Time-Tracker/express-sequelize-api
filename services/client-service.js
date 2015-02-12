@@ -4,7 +4,12 @@ var db = require('../db/db.js');
 var q = require('q');
 
 function getAll() {
-  return db.client.findAll();
+  return db.client.findAll({
+    include: [{
+      model: db.project,
+      as: "projects"
+    }]
+  });
 }
 
 function getClient(id) {
