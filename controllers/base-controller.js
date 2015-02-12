@@ -1,12 +1,14 @@
+'use strict';
+
 module.exports = {
-  sendSuccess: function (data) {
+  sendSuccess: function(data) {
     var obj = {};
     obj.status = 'SUCCESS';
     obj.data = data;
     return obj;
   },
 
-  sendError: function (error) {
+  sendError: function(error) {
     var obj = {};
     obj.status = 'ERROR';
     obj.error = error;
