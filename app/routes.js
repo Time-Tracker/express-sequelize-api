@@ -3,7 +3,7 @@
 var projectController = require('../controllers/project-controller.js');
 var clientController = require('../controllers/client-controller.js');
 var taskController = require('../controllers/task-controller.js');
-var trackerController = require('../controllers/tracker-controller.js');
+var tasklogController = require('../controllers/tasklog-controller.js');
 
 module.exports = function(router) {
 
@@ -24,10 +24,10 @@ module.exports = function(router) {
   router.delete('/tasks/:id', taskController.deleteTask);
   router.get('/tasks/:id', taskController.getTask);
 
-  router.get('/tasks/:id/tracker', trackerController.getTrackerByTask);
+  router.get('/tasks/:id/tracker', tasklogController.getTrackerByTask);
 
-  router.get('/tracker', trackerController.getAll);
-  router.post('/tracker', trackerController.saveTracker);
-  router.delete('/tracker/:id', trackerController.deleteTracker);
-  router.get('/tracker/:id', trackerController.getTracker);
+  router.get('/tracker', tasklogController.getAll);
+  router.post('/tracker', tasklogController.saveTracker);
+  router.delete('/tracker/:id', tasklogController.deleteTracker);
+  router.get('/tracker/:id', tasklogController.getTracker);
 };
