@@ -12,7 +12,6 @@ function getAll() {
   });
 }
 
-
 function saveTask(task) {
   console.log('asdas');
   return db.task.upsert({
