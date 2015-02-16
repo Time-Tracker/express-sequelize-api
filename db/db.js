@@ -1,7 +1,7 @@
 'use strict';
 
 var dbconfig = require('../config/config.js');
-var Sequelize = require('Sequelize');
+var Sequelize = require('sequelize');
 
 var sequelize = new Sequelize(dbconfig.database, dbconfig.connection.user, dbconfig.connection.password, {
   host: dbconfig.connection.localhost,
