@@ -8,7 +8,7 @@ function getAll() {
 }
 
 function deleteTaskLogs(id) {
-  return db.task.destroy({
+  return db.tasklogs.destroy({
     where: {
       id: id
     }
@@ -16,8 +16,9 @@ function deleteTaskLogs(id) {
 }
 
 function saveTaskLogs(tasklog) {
-  return db.task.upsert({
+  return db.tasklogs.upsert({
     id: tasklog.id,
+    working: tasklog.working,
     start: tasklog.start,
     end: tasklog.end,
     taskId: tasklog.taskId

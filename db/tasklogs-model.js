@@ -17,6 +17,8 @@ module.exports = function(sequelize) {
       type: Sequelize.BOOLEAN,
       field: 'working'
     }
+  }, {
+    timestamps: false,
   });
   return TaskLogs;
 
