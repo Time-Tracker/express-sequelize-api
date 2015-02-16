@@ -13,7 +13,6 @@ function getAll() {
 }
 
 function saveTask(task) {
-  console.log('asdas');
   return db.task.upsert({
     id: task.id,
     name: task.name,

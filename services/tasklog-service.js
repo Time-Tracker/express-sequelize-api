@@ -4,97 +4,35 @@ var db = require('../db/db.js');
 var q = require('q');
 
 function getAll() {
-  var deferred = q.defer();
-  db.tracker.find({}, function(err, data) {
-    if (err) {
-      deferred.reject(err);
-    } else {
-      deferred.resolve(data);
-    }
-  }).populate('task');
-  return deferred.promise;
+  return db.tasklogs.findAll();
 }
 
-
-function save(tracker, deferred) {
-  tracker = new db.tracker(tracker);
-  tracker.save(function(err, data) {
-    if (err) {
-      deferred.reject(err);
-    } else {
-      deferred.resolve(data);
+function deleteTaskLogs(id) {
+  return db.task.destroy({
+    where: {
+      id: id
     }
   });
 }
 
-function update(tracker, deferred) {
-  tracker = new db.tracker(tracker);
-  db.tracker.findByIdAndUpdate(tracker._id, {
-    'name': tracker.name,
-    'description': tracker.description
-  }, function(err, data) {
-    if (err) {
-      deferred.reject(err);
-    } else {
-      deferred.resolve(data);
-    }
+function saveTaskLogs(tasklog) {
+  return db.task.upsert({
+    id: tasklog.id,
+    start: tasklog.start,
+    end: tasklog.end,
+    taskId: tasklog.taskId
   });
 }
 
-function saveTracker(tracker) {
-  var deferred = q.defer();
-  if (tracker._id) {
-    update(tracker, deferred);
-  } else {
-    save(tracker, deferred);
-  }
-  return deferred.promise;
-}
-
-function deleteTracker(id) {
-  var deferred = q.defer();
-  db.tracker.findByIdAndRemove({
-    '_id': id
-  }, function(err, data) {
-    if (err) {
-      deferred.reject(err);
-    } else {
-      deferred.resolve(data);
+function getTaskLog(id) {
+  return db.tasklogs.find({
+    where: {
+      id: id
     }
   });
-  return deferred.promise;
-}
-
-function getTracker(id) {
-  var deferred = q.defer();
-  db.tracker.findOne({
-    '_id': id
-  }, function(err, data) {
-    if (err) {
-      deferred.reject(err);
-    } else {
-      deferred.resolve(data);
-    }
-  }).populate('task');
-  return deferred.promise;
-}
-
-function getTrackerByTask(id) {
-  var deferred = q.defer();
-  db.tracker.find({
-    'task': id
-  }, function(err, data) {
-    if (err) {
-      deferred.reject(err);
-    } else {
-      deferred.resolve(data);
-    }
-  }).populate('task');
-  return deferred.promise;
 }
 
 module.exports.getAll = getAll;
-module.exports.getTrackerByTask = getTrackerByTask;
-module.exports.saveTracker = saveTracker;
-module.exports.deleteTracker = deleteTracker;
-module.exports.getTracker = getTracker;
+module.exports.saveTaskLogs = saveTaskLogs;
+module.exports.deleteTaskLogs = deleteTaskLogs;
+module.exports.getTaskLog = getTaskLog;

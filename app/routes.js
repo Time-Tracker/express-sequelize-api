@@ -22,8 +22,8 @@ module.exports = function(router) {
   router.delete('/tasks/:id', taskController.deleteTask);
   router.get('/tasks/:id', taskController.getTask);
 
-  router.get('/tracker', tasklogController.getAll);
-  router.post('/tracker', tasklogController.saveTracker);
-  router.delete('/tracker/:id', tasklogController.deleteTracker);
-  router.get('/tracker/:id', tasklogController.getTracker);
+  router.get('/tasklogs', tasklogController.getAll);
+  router.post('/tasklogs', tasklogController.saveTaskLogs);
+  router.delete('/tasklogs/:id', tasklogController.deleteTaskLogs);
+  router.get('/tasklogs/:id', tasklogController.getTaskLog);
 };

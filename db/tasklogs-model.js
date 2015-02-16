@@ -6,15 +6,15 @@ module.exports = function(sequelize) {
 
   var TaskLogs = sequelize.define('tasklogs', {
     start: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
       field: 'start'
     },
     end: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
       field: 'end'
     },
     working: {
-      type: Sequelize.STRING,
+      type: Sequelize.BOOLEAN,
       field: 'working'
     }
   });
