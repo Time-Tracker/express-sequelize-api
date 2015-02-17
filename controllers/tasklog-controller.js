@@ -28,7 +28,6 @@ function deleteTaskLogs(req, res) {
 }
 
 function getTaskLog(req, res) {
-  console.log(req.params.id);
   tasklogService.getTaskLog(req.params.id).then(function(data) {
     res.json(base.sendSuccess(data));
   }, function(err) {

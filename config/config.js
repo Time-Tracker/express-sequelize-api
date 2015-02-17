@@ -8,7 +8,7 @@ config.connection = {
 };
 config.database = {
   'name': 'sampledb',
-  logging: true,
+  logging: false,
   dialect: 'mysql'
 }
 
