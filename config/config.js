@@ -6,6 +6,10 @@ config.connection = {
   'port': '8889',
   'password': 'root'
 };
-config.database = 'sampledb';
+config.database = {
+  'name': 'sampledb',
+  logging: true,
+  dialect: 'mysql'
+}
 
 module.exports = config;

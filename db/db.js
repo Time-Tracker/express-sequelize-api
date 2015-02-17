@@ -3,11 +3,11 @@
 var dbconfig = require('../config/config.js');
 var Sequelize = require('sequelize');
 
-var sequelize = new Sequelize(dbconfig.database, dbconfig.connection.user, dbconfig.connection.password, {
+var sequelize = new Sequelize(dbconfig.database.name, dbconfig.connection.user, dbconfig.connection.password, {
   host: dbconfig.connection.localhost,
   port: dbconfig.connection.port,
-  dialect: 'mysql',
-  //logging: true,
+  dialect: dbconfig.database.dialect,
+  logging: dbconfig.database.logging,
 
   pool: {
     max: 5,
