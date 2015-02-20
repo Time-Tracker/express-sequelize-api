@@ -1,18 +1,37 @@
-# Complete Guide to Node Authentication with MySQL
+# Time Logger API
 
-Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication with MongoDB
+API for time tracker project using:-
+* [Node.js](http://nodejs.org/)
+* [MySql](http://www.mysql.com/)
+* [Sequelize](http://sequelizejs.com/)
+* [Express 4](http://expressjs.com/)
+* [Moongoose](http://mongoosejs.com/index.html)
 
-Current version database is ported to MySQL
+## Running Locally
 
-We will be using Passport to authenticate users locally, 
+Make sure you have [Node.js](http://nodejs.org/) and the [MySql](http://www.mysql.com/) installed and running.
 
-## Instructions
+```sh
+git clone https://github.com/tloger/express-sequelize-api.git # or clone your own fork
+cd express-sequelize-api
+npm install # Make sure you change database connection details in config file
+node server.js
+```
 
-If you would like to download the code and try it for yourself:
+Your app should now be running on [http://localhost:8080](http://localhost:8080/)
 
-1. Clone the repo: `git clone git@github.com:manjeshpv/node-express-passport-mysql.git`
-1. Install packages: `npm install`
-1. Edit the database configuration: `config/database.js`
-1. Create the database schema: `node scripts/create_database.js`
-1. Launch: `node server.js`
-1. Visit in your browser at: `http://localhost:8080`
+## Deploying to Heroku
+
+```
+heroku create
+git push heroku master
+heroku open
+```
+
+Alternatively, you can deploy your own copy of the app using this button.
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+## Documentation
+
+For more information about using Heroku, check out https://devcenter.heroku.com/
