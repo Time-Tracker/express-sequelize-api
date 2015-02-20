@@ -2,19 +2,25 @@
 
 var dbconfig = require('../config/config.js');
 var Sequelize = require('sequelize');
+var connectionString = process.env.CLEARDB_DATABASE_URL;
+var sequelize;
 
-var sequelize = new Sequelize(dbconfig.database.name, dbconfig.connection.user, dbconfig.connection.password, {
-  host: dbconfig.connection.localhost,
-  port: dbconfig.connection.port,
-  dialect: dbconfig.database.dialect,
-  logging: dbconfig.database.logging,
+if (connectionString) {
+  sequelize = new Sequelize(connectionString);
+} else {
+  sequelize = new Sequelize(dbconfig.database.name, dbconfig.connection.user, dbconfig.connection.password, {
+    host: dbconfig.connection.localhost,
+    port: dbconfig.connection.port,
+    dialect: dbconfig.database.dialect,
+    logging: dbconfig.database.logging,
 
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
-});
+    pool: {
+      max: 5,
+      min: 0,
+      idle: 10000
+    }
+  });
+}
 
 // Tables
 module.exports.client = require('./client-model.js')(sequelize);
