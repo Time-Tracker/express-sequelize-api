@@ -4,12 +4,10 @@ var db = require('../db/db.js');
 var q = require('q');
 
 function getAll() {
-  return db.project.findAll({
-    include: [{
-      model: db.task,
-      as: "tasks"
-    }]
-  });
+  return q.all([
+    db.client.findAll(),
+    db.project.findAll()
+  ]);
 }
 
 function getProject(id) {
