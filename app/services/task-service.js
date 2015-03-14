@@ -4,12 +4,10 @@ var db = require('../db/db.js');
 var q = require('q');
 
 function getAll() {
-  return db.task.findAll({
-    include: [{
-      model: db.tasklogs,
-      as: "tasklogs"
-    }]
-  });
+  return q.all([
+    db.project.findAll(),
+    db.task.findAll()
+  ]);
 }
 
 function saveTask(task) {

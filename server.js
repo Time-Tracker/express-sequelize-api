@@ -1,20 +1,24 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8080;
 var bodyParser = require('body-parser');
-var cors = require('cors');
+var router = express.Router();
+var config = require('./app/config/config.js');
 var morgan = require('morgan');
 
-app.configure(function() {
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+app.use(morgan('combined'));
 
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
-  app.use(morgan('combined'));
-  app.use(express.cookieParser());
-  app.use(cors());
+router.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
 });
 
-require('./app/routes.js')(app);
-app.listen(port);
+require('./app/routes/routes.js')(router);
+
+app.use('/api', router);
+app.listen(config.port);
+console.log('Magic happens on port ' + config.port);

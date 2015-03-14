@@ -1,17 +1,16 @@
 {
-  "name": "thomaskeeper-api",
+  "name": "express-sequelize-api",
   "main": "server.js",
   "scripts": {
     "start": "node ./server"
   },
   "dependencies": {
-    "body-parser": "^1.9.2",
-    "cors": "^2.5.3",
-    "express": "~3.4.4",
-    "lodash": "^3.3.0",
-    "morgan": "1.5.1",
-    "mysql": "*",
-    "q": "^1.0.1",
-    "sequelize": "^2.0.1"
+    "body-parser": "^1.12.0",
+    "express": "^4.12.2",
+    "lodash": "^3.5.0",
+    "morgan": "^1.5.1",
+    "mysql": "^2.5.5",
+    "q": "^1.2.0",
+    "sequelize": "^2.0.4"
   }
 }

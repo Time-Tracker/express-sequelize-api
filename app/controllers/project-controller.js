@@ -7,7 +7,6 @@ var _ = require('lodash');
 function populateClient(clients, projects) {
   return _.map(projects, function(val){
     var client =  _.find(clients, {dataValues: {id:val.clientId}});
-    console.log(client);
     if(!client) {
       client = {name:'None'};
     }
